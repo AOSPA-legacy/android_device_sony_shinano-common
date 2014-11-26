@@ -23,7 +23,7 @@ include device/sony/msm8974-common/BoardConfigCommon.mk
 TARGET_SPECIFIC_HEADER_PATH := device/sony/shinano-common/include
 
 # Kernel properties
-TARGET_KERNEL_SOURCE := kernel/sony/msm8974pro
+TARGET_KERNEL_SOURCE := kernel/sony/msm8974
 
 # Platform
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
@@ -44,8 +44,8 @@ BOARD_KERNEL_BASE     := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
-BOARD_CUSTOM_BOOTIMG_MK := device/sony/shinano-common/custombootimg.mk
 BOARD_KERNEL_SEPARATED_DT := true
+TARGET_DTB_EXTRA_FLAGS := --force-v2
 
 # Qualcomm
 BOARD_USES_QCOM_HARDWARE := true
@@ -108,8 +108,6 @@ BOARD_SEPOLICY_DIRS += \
 
 # The list below is order dependent
 BOARD_SEPOLICY_UNION := \
-    device.te \
-    app.te \
     file_contexts
 
 # Wifi
@@ -122,13 +120,12 @@ BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
 WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin"
 WIFI_DRIVER_MODULE_ARG           := "nvram_path=/system/etc/firmware/wlan/bcmdhd/bcmdhd.cal"
 
 # NFC
 BOARD_NFC_CHIPSET := pn547
-BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)
 
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072

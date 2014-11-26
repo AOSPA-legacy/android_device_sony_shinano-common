@@ -9,8 +9,6 @@ vendor/lib/soundfx/libqcvirt.so
 
 # Audio BLOBS
 lib/libaudioroute.so
-lib/libtinyalsa.so
-lib/soundfx/libqcomvisualizer.so
 vendor/etc/effect_init_params
 vendor/lib/liblistenhardware.so
 
@@ -40,10 +38,6 @@ etc/firmware/BCM4339.hcd
 bin/btnvtool
 bin/hci_qcomm_init
 vendor/lib/libbtnv.so
-
-# Bluetooth BLOBS
-lib/libbt-hci.so
-vendor/lib/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -214,7 +208,7 @@ bin/fmconfig
 bin/fm_qsoc_patches
 
 # GPS
--app/com.qualcomm.location.apk
+-app/com.qualcomm.location.apk:priv-app/com.qualcomm.location/com.qualcomm.location.apk
 bin/gsiff_daemon
 etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
@@ -253,10 +247,6 @@ vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
 
-# Lights
-lib/hw/lights.default.so:lib/hw/lights.vendor.default.so
-lib/liblights-core.so
-
 # Media config
 etc/media_profiles.xml
 
@@ -266,6 +256,7 @@ bin/qmuxd
 bin/rmt_storage
 bin/sct_service
 lib/libpin-cache.so
+lib/libstartup-reason.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsnetutils.so
@@ -275,9 +266,6 @@ vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
 
 # Modem firmware
-#etc/firmware/D6x02/mba.b00
-#etc/firmware/D6x02/modem.b01
-#etc/firmware/D6x02/modem.mdt
 etc/firmware/mba.b00
 etc/firmware/mba.mdt
 
@@ -341,6 +329,7 @@ vendor/lib/libsensor_reg.so
 
 # Sysmon
 bin/system_monitor
+lib/liblights-core.so
 lib/libprotobuf-c.so
 lib/libsysmon_idd.so
 lib/libsysmon.so
@@ -396,3 +385,7 @@ bin/clearpad_fwloader
 
 # WiFi
 bin/radish
+
+# WiFi firmware
+etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin
+etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin
