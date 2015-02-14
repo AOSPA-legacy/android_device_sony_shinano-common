@@ -52,7 +52,6 @@ PRODUCT_PACKAGES += \
 
 # Sbin
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/charger:root/healthd \
     $(COMMON_PATH)/rootdir/sbin/tad_static:system/bin/tad_static
 
 # ANT+
@@ -63,7 +62,8 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    libaudioamp
+     tfa9890_amp
+#    libaudioamp
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -76,10 +76,6 @@ PRODUCT_COPY_FILES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck
-
-# FM Radio
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -100,6 +96,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(COMMON_PATH)/rootdir/system/usr/keylayout/mhl-rcp.kl:system/usr/keylayout/mhl-rcp.kl \
+    $(COMMON_PATH)/rootdir/system/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl:system/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl
+
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
@@ -112,10 +114,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
-# Qualcomm Random Number Generator
+# Off mode charger
 PRODUCT_PACKAGES += \
-    qrngd \
-    qrngp
+    charger_res_images
 
 # USB
 PRODUCT_PACKAGES += \
@@ -124,9 +125,6 @@ PRODUCT_PACKAGES += \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
-
-# We have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Audio offload
 PRODUCT_PROPERTY_OVERRIDES += \

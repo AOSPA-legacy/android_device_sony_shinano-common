@@ -32,7 +32,7 @@ TARGET_DTB_EXTRA_FLAGS := --force-v2
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
-BOARD_AUDIO_AMPLIFIER := device/sony/shinano-common/libaudioamp
+#BOARD_AUDIO_AMPLIFIER := device/sony/shinano-common/libaudioamp
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -61,9 +61,9 @@ TARGET_INIT_VENDOR_LIB := libinit_shinano
 BOARD_SEPOLICY_DIRS += \
     device/sony/shinano-common/sepolicy
 
-# The list below is order dependent
 BOARD_SEPOLICY_UNION += \
-    file_contexts
+    mlog_qmi.te \
+    tfa_amp.te
 
 # Wifi
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
