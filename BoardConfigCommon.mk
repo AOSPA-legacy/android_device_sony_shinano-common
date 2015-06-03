@@ -31,9 +31,6 @@ TARGET_DTB_EXTRA_FLAGS := --force-v2
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
-# Audio
-#BOARD_AUDIO_AMPLIFIER := device/sony/shinano-common/libaudioamp
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -46,7 +43,7 @@ BOARD_CAMERA_HAVE_ISO := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CM Hardware
-BOARD_HARDWARE_CLASS := device/sony/shinano-common/cmhw
+BOARD_HARDWARE_CLASS += device/sony/shinano-common/cmhw
 
 # Dumpstate
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
@@ -78,7 +75,6 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin"
 WIFI_DRIVER_MODULE_ARG           := "nvram_path=/system/etc/firmware/wlan/bcmdhd/bcmdhd.cal"
-BOARD_NO_WIFI_HAL := true
 
 # NFC
 BOARD_NFC_CHIPSET := pn547

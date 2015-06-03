@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 # inherit from msm8974-common
 $(call inherit-product, device/sony/msm8974-common/msm8974.mk)
 
@@ -59,15 +57,6 @@ PRODUCT_PACKAGES += \
     AntHalService \
     com.dsi.ant.antradio_library \
     libantradio
-
-# Audio
-PRODUCT_PACKAGES += \
-     tfa9890_amp
-#    libaudioamp
-
-# Audio configuration
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
@@ -175,11 +164,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # HDMI
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.demo.hdmirotationlock=false
-
-# MDP
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.mdpcomp.logs=0 \
-    debug.mdpcomp.4k2kSplit=true
 
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \

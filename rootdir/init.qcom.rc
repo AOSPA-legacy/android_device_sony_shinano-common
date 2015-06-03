@@ -261,6 +261,9 @@ on boot
     # Symlink for compability
     symlink /dev/pn547 /dev/pn544
 
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+
 on post-fs
     # MHL driver. To support MHL power off charge,
     # the insmod must be done before chargemon.
@@ -544,13 +547,6 @@ service bugreport /system/bin/dumpstate -d -p -B \
     oneshot
     keycodes 114 115 116
 
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    class late_start
-    user root
-    group system qcom_oncrpc
-    disabled
-    oneshot
-
 # Secure Config Transfer service
 service sct_service /system/bin/sct_service
     user root
@@ -580,13 +576,6 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
-
-service ppd /system/bin/mm-pp-daemon
-    class late_start
-    user system
-    socket pps stream 0660 system system
-    group system graphics qcom_diag
-    disabled
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
@@ -620,12 +609,6 @@ service tfa9890_amp /system/bin/tfa9890_amp
     group audio
     oneshot
     ioprio rt 4
-
-on property:init.svc.surfaceflinger=running
-    start ppd
-
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
 
 on property:service.bootanim.exit=1
     # Enable Power modes
